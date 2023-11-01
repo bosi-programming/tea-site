@@ -5,6 +5,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'react-app',
+    'airbnb',
+    'airbnb-typescript',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -14,5 +17,11 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    quotes: [
+      'error',
+      'single',
+      { allowTemplateLiterals: true, avoidEscape: true },
+    ],
+    'max-len': ['error', { code: 120, tabWidth: 2 }],
   },
 }
