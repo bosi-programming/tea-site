@@ -1,24 +1,24 @@
 import classNames from 'classnames';
 
-export interface TitleProps {
+export interface ParagraphProps {
   className?: string;
   children?: React.ReactNode;
 }
 
-export function Title({ className, children }: TitleProps) {
+export function Paragraph({ className, children }: ParagraphProps) {
   return (
-    <h1
+    <p
       className={classNames(
-        'text-3xl',
-        'font-bold',
+        'pt-2',
+        'pb-2',
         'font-mono',
-        'underline',
         'text-slate-900',
         'dark:text-slate-100',
+        'leading-relaxed',
         className,
       )}
     >
       {children}
-    </h1>
+    </p>
   );
 }
