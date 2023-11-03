@@ -50,6 +50,7 @@ function App() {
         </div>
         {!concentration && <Paragraph>Please select a concentration</Paragraph>}
         {!size && <Paragraph>Please select a size</Paragraph>}
+        {/* TODO remove from form and add timer */}
         {concentration && size && (
           <>
             <Paragraph>
