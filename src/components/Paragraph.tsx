@@ -9,6 +9,8 @@ export function Paragraph({ className, children }: ParagraphProps) {
   return (
     <p
       className={classNames(
+        'text-base',
+        'lg:text-lg',
         'pt-2',
         'pb-2',
         'font-mono',
