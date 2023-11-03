@@ -5,10 +5,7 @@ export interface InputProps
   labelChildren?: React.ReactNode;
 }
 
-export function Input({
-  labelChildren,
-  ...rest
-}: InputProps) {
+export function Input({ labelChildren, ...rest }: InputProps) {
   return (
     <input
       aria-label={labelChildren as string}

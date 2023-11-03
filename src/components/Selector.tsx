@@ -6,11 +6,7 @@ export interface SelectorProps
   options: { id: string | number; label: React.ReactNode }[];
 }
 
-export function Selector({
-  labelChildren,
-  options,
-  ...rest
-}: SelectorProps) {
+export function Selector({ labelChildren, options, ...rest }: SelectorProps) {
   return (
     <select
       aria-label={labelChildren as string}

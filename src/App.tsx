@@ -24,7 +24,10 @@ function App() {
   const [size, setSize] = useState<number>();
   console.log(concentration, size);
   return (
-    <main className="flex flex-col pt-10 sm:pt-20 lg:p-0 lg:justify-center items-center h-screen w-screen bg-white dark:bg-slate-800">
+    <main
+      className={`flex flex-col pt-10 sm:pt-20 lg:p-0 lg:justify-center 
+      items-center h-screen w-screen bg-white dark:bg-slate-800`}
+    >
       <Title>Tea Site</Title>
       <form className="flex flex-col justify-center mt-5 lg:mt-10 w-5/6 max-w-screen-md">
         <Paragraph className="mb-5 lg:mb-10 text-sm">
@@ -37,15 +40,17 @@ function App() {
             labelChildren="Select a concentration:"
             options={CONCENTRATIONS}
             value={concentration}
-            onChange={(e) => e.target.value && setConcentration(Number(e.target.value))}
-            className='w-full'
+            onChange={(e) =>
+              e.target.value && setConcentration(Number(e.target.value))
+            }
+            className="w-full"
           />
           <Input
             labelChildren="Size of vessel in ml"
             value={size}
             onChange={(e) => setSize(Number(e.target.value))}
             type="number"
-            className='w-full'
+            className="w-full"
           />
         </div>
         {!concentration && <Paragraph>Please select a concentration</Paragraph>}
@@ -54,21 +59,32 @@ function App() {
         {concentration && size && (
           <>
             <Paragraph>
-              <Leaf height={24} width={24} className="text-green-700 inline-block align-middle" /> {' '}
+              <Leaf
+                height={24}
+                width={24}
+                className="text-green-700 inline-block align-middle"
+              />{' '}
               {Math.ceil(size / concentration)} g
             </Paragraph>
             <Paragraph>
-              <Cup height={24} width={24} className="text-green-700 inline-block align-middle" /> {' '}
-              {BASE_INFUSION_TIME[
-                `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
-              ].length} steeps: {' '}
+              <Cup
+                height={24}
+                width={24}
+                className="text-green-700 inline-block align-middle"
+              />{' '}
+              {
+                BASE_INFUSION_TIME[
+                  `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
+                ].length
+              }{' '}
+              steeps:{' '}
               {BASE_INFUSION_TIME[
                 `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
               ].join(', ')}{' '}
               seconds
             </Paragraph>
-          </>)
-        }
+          </>
+        )}
       </form>
     </main>
   );
