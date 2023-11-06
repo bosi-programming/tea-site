@@ -22,7 +22,6 @@ const CONCENTRATIONS = [
 function App() {
   const [concentration, setConcentration] = useState<number>();
   const [size, setSize] = useState<number>();
-  console.log(concentration, size);
   return (
     <main
       className={`flex flex-col pt-10 sm:pt-20 lg:p-0 lg:justify-center 
