@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Title, Input, Selector, Paragraph } from './components';
+import { Title, Input, Selector, Paragraph, Timer } from './components';
 import { Leaf } from './icons/Leaf';
 import { Cup } from './icons/Cup';
 
@@ -82,6 +82,13 @@ function App() {
               ].join(', ')}{' '}
               seconds
             </Paragraph>
+            <Timer
+              infusionTime={
+                BASE_INFUSION_TIME[
+                  `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
+                ]
+              }
+            />
           </>
         )}
       </form>
