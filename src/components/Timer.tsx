@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { sound } from '../assets/beep';
+import { Paragraph } from '.';
 
 const timerText = (time: number) => {
   const date = new Date(1000 * time);
@@ -22,6 +23,7 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
 
       if (time === 0) {
         setStart(false);
+        setSteep(steep + 1);
         setTimeText('Start timer');
         sound.play().catch((e: unknown) => console.error(e));
         clearInterval(timer);
@@ -31,23 +33,27 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
         clearInterval(timer);
       };
     }
-  }, [start, time]);
+  }, [start, time, steep]);
 
   const handleStart = (e: React.MouseEvent) => {
     e.preventDefault();
     setStart(true);
-    setSteep(steep + 1);
     setTime(infusionTime[steep]);
     setTimeText(timerText(infusionTime[steep]));
   };
 
   return (
-    <button
-      className="bg-yellow-500 w-6/12 lg:w-3/12 m-auto mt-10 hover:bg-yellow-700 focus:bg-yellow-500 text-slate-900 font-bold font-mono py-2 px-4 border border-yellow-700 rounded"
-      onClick={(e) => handleStart(e)}
-      role="button"
-    >
-      {timeText}
-    </button>
+    <>
+      <Paragraph className='mt-10 text-center'>
+        You are on steep {steep + 1} of {infusionTime.length}
+      </Paragraph>
+      <button
+        className="m-auto mt-2 w-6/12 rounded border border-yellow-700 bg-yellow-500 px-4 py-2 font-mono font-bold text-slate-900 hover:bg-yellow-700 focus:bg-yellow-500 lg:w-3/12"
+        onClick={(e) => handleStart(e)}
+        role="button"
+      >
+        {timeText}
+      </button>
+    </>
   );
 }

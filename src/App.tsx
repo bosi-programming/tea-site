@@ -24,17 +24,17 @@ function App() {
   const [size, setSize] = useState<number>();
   return (
     <main
-      className={`flex flex-col pt-10 sm:pt-20 lg:p-0 lg:justify-center 
-      items-center h-screen w-screen bg-white dark:bg-slate-800`}
+      className={`flex h-screen w-screen flex-col items-center bg-white 
+      pt-10 dark:bg-slate-800 sm:pt-20 lg:justify-center lg:p-0`}
     >
       <Title>Tea Site</Title>
-      <form className="flex flex-col justify-center mt-5 lg:mt-10 w-5/6 max-w-screen-md">
-        <Paragraph className="mb-5 lg:mb-10 text-sm">
+      <form className="mt-5 flex w-5/6 max-w-screen-md flex-col justify-center lg:mt-10">
+        <Paragraph className="mb-5 text-sm lg:mb-10">
           Note that the real amount of tea and the infusion time can vary
           depending on the type of tea and the quality of the same. Please
           experiment yourself.
         </Paragraph>
-        <div className="w-full lg:w-6/12 lg:mb-10 lg:mt-10 flex flex-col justify-center self-center lg:items-center">
+        <div className="flex w-full flex-col justify-center self-center lg:my-10 lg:w-6/12 lg:items-center">
           <Selector
             labelChildren="Select a concentration:"
             options={CONCENTRATIONS}
@@ -61,7 +61,7 @@ function App() {
               <Leaf
                 height={24}
                 width={24}
-                className="text-green-700 inline-block align-middle"
+                className="inline-block align-middle text-green-700"
               />{' '}
               {Math.ceil(size / concentration)} g
             </Paragraph>
@@ -69,7 +69,7 @@ function App() {
               <Cup
                 height={24}
                 width={24}
-                className="text-green-700 inline-block align-middle"
+                className="inline-block align-middle text-green-700"
               />{' '}
               {
                 BASE_INFUSION_TIME[
@@ -85,7 +85,7 @@ function App() {
             <Timer
               infusionTime={
                 BASE_INFUSION_TIME[
-                  `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
+                `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
                 ]
               }
             />
