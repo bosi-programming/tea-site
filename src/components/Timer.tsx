@@ -48,9 +48,10 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
         You are on steep {steep + 1} of {infusionTime.length}
       </Paragraph>
       <button
-        className="m-auto mt-2 w-6/12 rounded border border-yellow-700 bg-yellow-500 px-4 py-2 font-mono font-bold text-slate-900 hover:bg-yellow-700 focus:bg-yellow-500 lg:w-3/12"
+        className="m-auto mt-2 w-6/12 rounded border border-yellow-700 bg-yellow-500 px-4 py-2 font-mono font-bold text-slate-900 hover:bg-yellow-700 focus:bg-yellow-500 disabled:hover:bg-yellow-500 lg:w-3/12"
         onClick={(e) => handleStart(e)}
         role="button"
+        disabled={start || steep === infusionTime.length}
       >
         {timeText}
       </button>
