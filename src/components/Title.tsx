@@ -14,7 +14,7 @@ export function Title({ className, children }: TitleProps) {
         'font-mono',
         'underline',
         'text-slate-900',
-        'dark:text-slate-100',
+        'dark:text-pink',
         className,
       )}
     >

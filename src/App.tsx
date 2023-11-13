@@ -21,11 +21,11 @@ const CONCENTRATIONS = [
 
 function App() {
   const [concentration, setConcentration] = useState<number>();
-  const [size, setSize] = useState<number>();
+  const [size, setSize] = useState<number | string>('Size of vessel in ml');
   return (
     <main
       className={`flex h-screen w-screen flex-col items-center bg-white 
-      pt-10 dark:bg-slate-800 sm:pt-20 lg:justify-center lg:p-0`}
+      pt-10 dark:bg-green sm:pt-20 lg:justify-center lg:p-0`}
     >
       <Title>Tea Site</Title>
       <form className="mt-5 flex w-5/6 max-w-screen-md flex-col justify-center lg:mt-10">
@@ -43,6 +43,7 @@ function App() {
               e.target.value && setConcentration(Number(e.target.value))
             }
             className="w-full"
+            defaultValue="default"
           />
           <Input
             labelChildren="Size of vessel in ml"
@@ -58,19 +59,23 @@ function App() {
         {concentration && size && (
           <>
             <Paragraph>
-              <Leaf
-                height={24}
-                width={24}
-                className="inline-block align-middle text-green-700"
-              />{' '}
+              <span className="dark:text-pink">
+                <Leaf
+                  height={24}
+                  width={24}
+                  className="inline-block align-middle"
+                />{' '}
+              </span>
               {Math.ceil(size / concentration)} g
             </Paragraph>
             <Paragraph>
-              <Cup
-                height={24}
-                width={24}
-                className="inline-block align-middle text-green-700"
-              />{' '}
+              <span className="dark:text-pink">
+                <Cup
+                  height={24}
+                  width={24}
+                  className="inline-block align-middle"
+                />{' '}
+              </span>
               {
                 BASE_INFUSION_TIME[
                   `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
@@ -85,7 +90,7 @@ function App() {
             <Timer
               infusionTime={
                 BASE_INFUSION_TIME[
-                `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
+                  `1/${concentration}` as keyof typeof BASE_INFUSION_TIME
                 ]
               }
             />
