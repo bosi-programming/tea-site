@@ -38,33 +38,43 @@ const timerText = (time: number) => {
   return date.toISOString().substring(14, 19);
 };
 
+let timer: ReturnType<typeof setInterval>;
+
 export function Timer({ infusionTime }: { infusionTime: number[] }) {
   const [start, setStart] = useState(false);
-  const [steep, setSteep] = useState(0);
+  const [steep, setSteep] = useState(10);
   const [time, setTime] = useState(infusionTime[steep]);
   const [timeText, setTimeText] = useState('Start timer');
 
   useEffect(() => {
     if (start) {
-      const timer = setInterval(() => {
+      timer = setInterval(() => {
         const newTime = time - 1;
         setTime(newTime);
         setTimeText(timerText(newTime));
       }, 1000);
+      return () => {
+        clearInterval(timer);
+      };
+    }
+  }, [start, time]);
 
-      if (time === 0) {
+  useEffect(() => {
+    if (time === 0) {
+      if (steep === infusionTime.length) {
+        setStart(false);
+        setSteep(0);
+        setTimeText('Last steep finished. Click here to restart');
+        return;
+      } else if (start) {
         setStart(false);
         setSteep(steep + 1);
         setTimeText('Start timer');
         audio.play().catch((e: unknown) => console.error(e));
         clearInterval(timer);
       }
-
-      return () => {
-        clearInterval(timer);
-      };
     }
-  }, [start, time, steep]);
+  }, [time, steep, infusionTime.length, start]);
 
   const handleStart = (e: React.MouseEvent) => {
     e.preventDefault();
