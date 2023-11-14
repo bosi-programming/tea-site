@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { sound } from '../assets/beep';
 import { Paragraph } from '.';
+
+const audio = new Audio('./beep.mp3');
 
 const baseClasses = [
   'm-auto',
@@ -55,7 +56,7 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
         setStart(false);
         setSteep(steep + 1);
         setTimeText('Start timer');
-        sound.play().catch((e: unknown) => console.error(e));
+        audio.play().catch((e: unknown) => console.error(e));
         clearInterval(timer);
       }
 
