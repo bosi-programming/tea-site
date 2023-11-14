@@ -66,7 +66,7 @@ function App() {
                   className="inline-block align-middle"
                 />{' '}
               </span>
-              {Math.ceil(size / concentration)} g
+              {Math.ceil(Number(size) / concentration)} g
             </Paragraph>
             <Paragraph>
               <span className="dark:text-pink">
