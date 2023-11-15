@@ -42,7 +42,7 @@ let timer: ReturnType<typeof setInterval>;
 
 export function Timer({ infusionTime }: { infusionTime: number[] }) {
   const [start, setStart] = useState(false);
-  const [steep, setSteep] = useState(10);
+  const [steep, setSteep] = useState(0);
   const [time, setTime] = useState(infusionTime[steep]);
   const [timeText, setTimeText] = useState('Start timer');
 
