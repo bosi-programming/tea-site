@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
 
+const { lightBlue, warmGray, trueGray, coolGray, blueGray, ...restColors } = colors;
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
-      ...colors,
+      ...restColors,
       transparent: 'transparent',
       current: 'currentColor',
       green: '#1e2d2f',
