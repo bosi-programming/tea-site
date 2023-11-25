@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Title, Input, Selector, Paragraph, Timer } from './components';
 import { Leaf } from './icons/Leaf';
 import { Cup } from './icons/Cup';
+import { useIntl } from 'react-intl';
 
 type TStrength = 'weak' | 'weakest' | 'normal' | 'strong' | 'strongest';
 type TConcentration = '1/10' | '1/15' | '1/30' | '1/50' | '1/100';
@@ -44,11 +45,6 @@ const BASE_INFUSION_TIME: Record<TStrength, Record<TConcentration, number[]>> = 
   },
 };
 
-const STRENGHTS = Object.keys(BASE_INFUSION_TIME).map((key) => ({
-  id: key,
-  label: key.charAt(0).toUpperCase() + key.slice(1),
-}));
-
 const CONCENTRATIONS = [
   { id: '1/10', label: '1/10' },
   { id: '1/15', label: '1/15' },
@@ -58,24 +54,28 @@ const CONCENTRATIONS = [
 ];
 
 function App() {
+  const intl = useIntl();
   const [strength, setStrength] = useState<TStrength>();
   const [concentration, setConcentration] = useState<TConcentration>();
   const [size, setSize] = useState<number | string>('');
+
+
+  const STRENGHTS = Object.keys(BASE_INFUSION_TIME).map((key) => ({
+    id: key,
+    label: intl.formatMessage({ id: key }),
+  }));
+
   return (
     <main
       className={`flex h-screen w-screen flex-col items-center bg-white 
       pt-10 dark:bg-green sm:pt-20 lg:justify-center lg:p-0`}
     >
-      <Title>Tea Site</Title>
+      <Title>{intl.formatMessage({ id: 'title' })}</Title>
       <form className="mt-5 flex w-5/6 max-w-screen-md flex-col justify-center lg:mt-10">
-        <Paragraph className="mb-5 text-sm lg:mb-10">
-          Note that the real amount of tea and the infusion time can vary
-          depending on the type of tea and the quality of the same. Please
-          experiment yourself.
-        </Paragraph>
+        <Paragraph className="mb-5 text-sm lg:mb-10">{intl.formatMessage({ id: 'topDescription' })}</Paragraph>
         <div className="flex w-full flex-col justify-center self-center lg:my-10 lg:w-6/12 lg:items-center">
           <Selector
-            labelChildren="Select a strength:"
+            labelChildren={intl.formatMessage({ id: 'strengthLabel' })}
             options={STRENGHTS}
             value={strength ?? 'default'}
             onChange={(e) =>
@@ -84,7 +84,7 @@ function App() {
             className="w-full"
           />
           <Selector
-            labelChildren="Select a concentration:"
+            labelChildren={intl.formatMessage({ id: 'concentrationLabel' })}
             options={CONCENTRATIONS}
             value={concentration ?? 'default'}
             onChange={(e) =>
@@ -93,15 +93,16 @@ function App() {
             className="w-full"
           />
           <Input
-            labelChildren="Size of vessel in ml"
+            labelChildren={intl.formatMessage({ id: 'sizeLabel' })}
             value={size}
             onChange={(e) => setSize(Number(e.target.value))}
             type="number"
             className="w-full"
           />
         </div>
-        {!concentration && <Paragraph>Please select a concentration</Paragraph>}
-        {!size && <Paragraph>Please select a size</Paragraph>}
+        {!strength && <Paragraph>{intl.formatMessage({ id: 'pleaseStrength' })}</Paragraph>}
+        {!concentration && <Paragraph>{intl.formatMessage({ id: 'pleaseConcentration' })}</Paragraph>}
+        {!size && <Paragraph>{intl.formatMessage({ id: 'pleaseSize' })}</Paragraph>}
         {/* TODO remove from form and add timer */}
         {strength && concentration && size && (
           <>
@@ -128,11 +129,11 @@ function App() {
                   concentration
                 ].length
               }{' '}
-              steeps:{' '}
+              {intl.formatMessage({ id: 'steeps' })}{' '}
               {BASE_INFUSION_TIME[strength][
                 concentration
               ].join(', ')}{' '}
-              seconds
+              {intl.formatMessage({ id: 'seconds' })}
             </Paragraph>
             <Timer
               infusionTime={

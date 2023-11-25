@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Paragraph } from '.';
+import { useIntl } from 'react-intl';
 
 const audio = new Audio('./beep.mp3');
 
@@ -41,10 +42,13 @@ const timerText = (time: number) => {
 let timer: ReturnType<typeof setInterval>;
 
 export function Timer({ infusionTime }: { infusionTime: number[] }) {
+  const intl = useIntl();
   const [start, setStart] = useState(false);
   const [steep, setSteep] = useState(0);
   const [time, setTime] = useState(infusionTime[steep]);
-  const [timeText, setTimeText] = useState('Start timer');
+  const startText = intl.formatMessage({ id: 'startTimer' });
+  const lastInfusionText = intl.formatMessage({ id: 'lastInfusion' });
+  const [timeText, setTimeText] = useState(startText);
 
   useEffect(() => {
     if (start) {
@@ -64,17 +68,17 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
       if (steep === infusionTime.length) {
         setStart(false);
         setSteep(0);
-        setTimeText('Last steep finished. Click here to restart');
+        setTimeText(lastInfusionText);
         return;
       } else if (start) {
         setStart(false);
         setSteep(steep + 1);
-        setTimeText('Start timer');
+        setTimeText(startText);
         audio.play().catch((e: unknown) => console.error(e));
         clearInterval(timer);
       }
     }
-  }, [time, steep, infusionTime.length, start]);
+  }, [time, startText, lastInfusionText, steep, infusionTime.length, start]);
 
   const handleStart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -86,7 +90,7 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
   return (
     <>
       <Paragraph className="mt-10 text-center">
-        You are on steep {steep + 1} of {infusionTime.length}
+        {intl.formatMessage({ id: 'timerInfusions' }, { steeps: steep + 1, totalSteeps: infusionTime.length })}
       </Paragraph>
       <button
         className={[...baseClasses, ...darkClasses].join(' ')}
