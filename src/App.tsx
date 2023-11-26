@@ -1,57 +1,9 @@
 import { useState } from 'react';
-import { Title, Input, Selector, Paragraph, Timer } from './components';
-import { Leaf } from './icons/Leaf';
-import { Cup } from './icons/Cup';
+import { Title, Input, Selector, Paragraph } from './components';
 import { useIntl } from 'react-intl';
-
-type TStrength = 'weak' | 'weakest' | 'normal' | 'strong' | 'strongest';
-type TConcentration = '1/10' | '1/15' | '1/30' | '1/50' | '1/100';
-
-const BASE_INFUSION_TIME: Record<TStrength, Record<TConcentration, number[]>> = {
-  weakest: {
-    '1/10': [0, 0, 5, 10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/15': [0, 5, 10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/30': [10, 20, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/50': [30, 60, 120, 180, 300, 480, 960],
-    '1/100': [120, 180, 300, 480, 960],
-  },
-  weak: {
-    '1/10': [0, 5, 10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/15': [5, 10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/30': [30, 45, 60, 120, 180, 300, 480, 960],
-    '1/50': [60, 120, 180, 300, 480, 960],
-    '1/100': [180, 300, 480, 960],
-  },
-  normal: {
-    '1/10': [10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/15': [10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/30': [60, 120, 180, 300, 480, 960],
-    '1/50': [120, 180, 300, 480, 960],
-    '1/100': [300, 480, 960],
-  },
-  strong: {
-    '1/10': [10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 960],
-    '1/15': [30, 45, 60, 120, 180, 300, 480, 960],
-    '1/30': [120, 180, 300, 480, 960],
-    '1/50': [300, 480, 960],
-    '1/100': [480, 960],
-  },
-  strongest: {
-    '1/10': [30, 45, 60, 120, 180, 300, 480, 960],
-    '1/15': [60, 120, 180, 300, 480, 960],
-    '1/30': [180, 300, 480, 960],
-    '1/50': [480, 960],
-    '1/100': [960],
-  },
-};
-
-const CONCENTRATIONS = [
-  { id: '1/10', label: '1/10' },
-  { id: '1/15', label: '1/15' },
-  { id: '1/30', label: '1/30' },
-  { id: '1/50', label: '1/50' },
-  { id: '1/100', label: '1/100' },
-];
+import { TConcentration, TStrength } from './App.types';
+import { BASE_INFUSION_TIME, CONCENTRATIONS } from './App.constants';
+import { StartInfusionSection } from './modules';
 
 function App() {
   const intl = useIntl();
@@ -103,46 +55,8 @@ function App() {
         {!strength && <Paragraph>{intl.formatMessage({ id: 'pleaseStrength' })}</Paragraph>}
         {!concentration && <Paragraph>{intl.formatMessage({ id: 'pleaseConcentration' })}</Paragraph>}
         {!size && <Paragraph>{intl.formatMessage({ id: 'pleaseSize' })}</Paragraph>}
-        {/* TODO remove from form and add timer */}
         {strength && concentration && size && (
-          <>
-            <Paragraph>
-              <span className="dark:text-pink">
-                <Leaf
-                  height={24}
-                  width={24}
-                  className="inline-block align-middle"
-                />{' '}
-              </span>
-              {Math.ceil(Number(size) / Number(concentration.replace('1/', '')))} g
-            </Paragraph>
-            <Paragraph>
-              <span className="dark:text-pink">
-                <Cup
-                  height={24}
-                  width={24}
-                  className="inline-block align-middle"
-                />{' '}
-              </span>
-              {
-                BASE_INFUSION_TIME[strength][
-                  concentration
-                ].length
-              }{' '}
-              {intl.formatMessage({ id: 'steeps' })}{' '}
-              {BASE_INFUSION_TIME[strength][
-                concentration
-              ].join(', ')}{' '}
-              {intl.formatMessage({ id: 'seconds' })}
-            </Paragraph>
-            <Timer
-              infusionTime={
-                BASE_INFUSION_TIME[strength][
-                concentration
-                ]
-              }
-            />
-          </>
+          <StartInfusionSection strength={strength} concentration={concentration} size={size} />
         )}
       </form>
     </main>
