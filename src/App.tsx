@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Title, Input, Selector, Paragraph } from './components';
 import { useIntl } from 'react-intl';
 import { TConcentration, TStrength } from './App.types';
-import { BASE_INFUSION_TIME, CONCENTRATIONS } from './App.constants';
+import { INFUSION_TIME, CONCENTRATIONS } from './App.constants';
 import { StartInfusionSection } from './modules';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   const [size, setSize] = useState<number | string>('');
 
 
-  const STRENGHTS = Object.keys(BASE_INFUSION_TIME).map((key) => ({
+  const STRENGHTS = Object.keys(INFUSION_TIME).map((key) => ({
     id: key,
     label: intl.formatMessage({ id: key }),
   }));
@@ -31,7 +31,7 @@ function App() {
             options={STRENGHTS}
             value={strength ?? 'default'}
             onChange={(e) =>
-              e.target.value && setStrength(e.target.value as keyof typeof BASE_INFUSION_TIME)
+              e.target.value && setStrength(e.target.value as keyof typeof INFUSION_TIME)
             }
             className="w-full"
           />
