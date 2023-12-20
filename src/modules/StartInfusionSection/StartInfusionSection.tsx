@@ -13,7 +13,7 @@ export function StartInfusionSection() {
   }
 
   return (
-    <>
+    <section className="w-5/6 max-w-screen-md text-left">
       <Paragraph>
         <span className="dark:text-pink">
           <Leaf
@@ -44,5 +44,5 @@ export function StartInfusionSection() {
           infusionsTime
         }
       />
-    </>)
+    </section>)
 }
