@@ -8,6 +8,7 @@ import { useInfusionStore } from '@/stores';
 export function TeaForm() {
   const intl = useIntl();
 
+  // TODO: Add useReducer with native zustand events
   const [strength, setStrength] = useState<TStrength>();
   const [concentration, setConcentration] = useState<TConcentration>();
   const [size, setSize] = useState<number | string>('');
