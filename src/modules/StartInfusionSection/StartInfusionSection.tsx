@@ -8,8 +8,6 @@ export function StartInfusionSection() {
   const intl = useIntl();
   const { grams, infusionsTime, totalInfusions } = useInfusionStore();
 
-  console.log('grams', grams, infusionsTime, totalInfusions);
-
   if (!grams || !infusionsTime || !totalInfusions) {
     return null;
   }

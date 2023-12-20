@@ -28,7 +28,6 @@ export function TeaForm() {
   const handleSetConcentration = (newConcentration: TConcentration) => {
     setConcentration(newConcentration);
     if (size) {
-      console.log('size', size, newConcentration);
       setGrams(Math.ceil(Number(size) / Number(newConcentration.replace('1/', ''))));
     }
     if (strength) {
