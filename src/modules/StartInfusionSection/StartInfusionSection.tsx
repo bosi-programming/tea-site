@@ -12,6 +12,7 @@ export function StartInfusionSection() {
     return null;
   }
 
+  // TODO: Add reset button
   return (
     <section className="w-5/6 max-w-screen-md text-left">
       <Paragraph>
