@@ -9,6 +9,7 @@ export function Form() {
   const intl = useIntl();
 
   const {
+    hideForm,
     size,
     handleSetSize,
     concentration,
@@ -21,6 +22,10 @@ export function Form() {
     id: key,
     label: intl.formatMessage({ id: key }),
   }));
+
+  if (hideForm) {
+    return null;
+  }
 
   return (
     <div className="flex w-full flex-col justify-center self-center lg:my-10 lg:w-6/12 lg:items-center">
