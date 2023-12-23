@@ -44,16 +44,20 @@ export const infusionStoreCreator: StateCreator<IInfusionStore> = (set) => ({
     })),
   handleSetStrength: (newStrength: TStrength) =>
     set((state) => ({
-      newStrength,
+      strength: newStrength,
       ...(state.concentration && {
         infusionsTime: BASE_INFUSION_TIME[newStrength][state.concentration],
+        totalInfusions:
+          BASE_INFUSION_TIME[newStrength][state.concentration].length,
       }),
     })),
   handleSetConcentration: (newConcentration: TConcentration) =>
     set((state) => ({
-      newConcentration,
+      concentration: newConcentration,
       ...(state.strength && {
         infusionsTime: BASE_INFUSION_TIME[state.strength][newConcentration],
+        totalInfusions:
+          BASE_INFUSION_TIME[state.strength][newConcentration].length,
       }),
       ...(state.size && {
         grams: Math.ceil(

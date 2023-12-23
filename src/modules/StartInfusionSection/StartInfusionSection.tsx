@@ -29,7 +29,15 @@ export function StartInfusionSection() {
           <Cup height={24} width={24} className="inline-block align-middle" />{' '}
         </span>
         {totalInfusions} {intl.formatMessage({ id: 'steeps' })}{' '}
-        {infusionsTime.join(', ')} {intl.formatMessage({ id: 'seconds' })}
+        {infusionsTime
+          .map((time) =>
+            time < 60
+              ? `${time}s`
+              : `${Math.floor(time / 60)}:${(time % 60)
+                .toString()
+                .padStart(2, '0')} min`,
+          )
+          .join(', ')}
       </Paragraph>
       <Timer infusionTime={infusionsTime} />
       <div className="w-full text-center">

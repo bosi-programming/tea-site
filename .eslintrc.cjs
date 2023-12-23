@@ -29,7 +29,7 @@ module.exports = {
       'single',
       { allowTemplateLiterals: true, avoidEscape: true },
     ],
-    "prettier/prettier": "error"
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
   },
   settings: {
     react: { version: 'detect' },
