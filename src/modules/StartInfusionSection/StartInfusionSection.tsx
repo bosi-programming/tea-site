@@ -35,7 +35,7 @@ export function StartInfusionSection() {
       <div className="w-full text-center">
         <Button
           onClick={clearInfusionStore}
-          className="mt-5 dark:border-red-400 dark:bg-red-400"
+          className="mt-5 border-red-700 bg-red-500 dark:border-red-400 dark:bg-red-400"
         >
           {intl.formatMessage({ id: 'reset' })}
         </Button>
