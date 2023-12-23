@@ -29,6 +29,7 @@ export const messages = {
     westernBlack: 'Western Black Tea',
     westernChineseGreen: 'Western Chinese Green Tea',
     orLabel: 'or',
+    reset: 'Reset',
   },
   ['pt-BR']: {
     title: 'Site de Chá',
@@ -60,5 +61,6 @@ export const messages = {
     westernBlack: 'Chá Preto Ocidental',
     westernChineseGreen: 'Chá Verde Chinês Ocidental',
     orLabel: 'ou',
+    reset: 'Reiniciar',
   },
 };

@@ -1,20 +1,20 @@
+import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { PRESETS } from './PresetSelector.constants';
-import { useState } from 'react';
 import { Selector } from '@/components';
-import { TConcentration } from '@/App.types';
 import { useInfusionStore } from '@/stores';
 
-export interface PresetSelectorProps {
-  handleSetConcentration: (value: TConcentration) => void;
-}
-
-export function PresetSelector({
-  handleSetConcentration,
-}: PresetSelectorProps) {
+export function PresetSelector() {
   const intl = useIntl();
-  const { setInfusionsTime } = useInfusionStore();
+  const { infusionsTime, setInfusionsTime, handleSetConcentration } =
+    useInfusionStore();
   const [preset, setPreset] = useState<keyof typeof PRESETS | undefined>();
+
+  useEffect(() => {
+    if (!infusionsTime) {
+      setPreset(undefined);
+    }
+  }, [infusionsTime]);
 
   const options = Object.keys(PRESETS).map((key) => ({
     id: key,

@@ -1,14 +1,15 @@
 import { useIntl } from 'react-intl';
 import { Cup } from '@/icons/Cup';
 import { Leaf } from '@/icons/Leaf';
-import { Paragraph } from '@/components';
+import { Button, Paragraph } from '@/components';
 import { useInfusionStore } from '@/stores';
 
 import { Timer } from './components';
 
 export function StartInfusionSection() {
   const intl = useIntl();
-  const { grams, infusionsTime, totalInfusions } = useInfusionStore();
+  const { grams, infusionsTime, totalInfusions, clearInfusionStore } =
+    useInfusionStore();
 
   if (!grams || !infusionsTime || !totalInfusions) {
     return null;
@@ -31,6 +32,14 @@ export function StartInfusionSection() {
         {infusionsTime.join(', ')} {intl.formatMessage({ id: 'seconds' })}
       </Paragraph>
       <Timer infusionTime={infusionsTime} />
+      <div className="w-full text-center">
+        <Button
+          onClick={clearInfusionStore}
+          className="mt-5 dark:border-red-400 dark:bg-red-400"
+        >
+          {intl.formatMessage({ id: 'reset' })}
+        </Button>
+      </div>
     </section>
   );
 }

@@ -1,7 +1,6 @@
-import { Paragraph } from '@/components/Paragraph';
+import { Paragraph, Button } from '@/components';
 import { useIntl } from 'react-intl';
 import { useTimer } from './useTimer';
-import { baseClasses, darkClasses } from './Timer.styles';
 
 export function Timer({ infusionTime }: { infusionTime: number[] }) {
   const intl = useIntl();
@@ -16,14 +15,13 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
           { steeps: steep + 1, totalSteeps: infusionTime.length },
         )}
       </Paragraph>
-      <button
-        className={[...baseClasses, ...darkClasses].join(' ')}
+      <Button
+        className="mb-0 mt-2"
         onClick={(e) => handleStart(e)}
-        role="button"
         disabled={start || steep === infusionTime.length}
       >
         {timeText}
-      </button>
+      </Button>
     </div>
   );
 }
