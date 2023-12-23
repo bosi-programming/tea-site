@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { Input, Selector } from '@/components';
+import { Input, Paragraph, Selector } from '@/components';
 import { BASE_INFUSION_TIME, CONCENTRATIONS } from '@/App.constants';
 import { TConcentration, TStrength } from '@/App.types';
 import { useInfusionStore } from '@/stores';
+import { PresetSelector } from '.';
 
 export function Form() {
   const intl = useIntl();
@@ -45,6 +46,17 @@ export function Form() {
   };
   return (
     <div className="flex w-full flex-col justify-center self-center lg:my-10 lg:w-6/12 lg:items-center">
+      <Input
+        labelChildren={intl.formatMessage({ id: 'sizeLabel' })}
+        value={size}
+        onChange={(e) => handleSetSize(Number(e.target.value))}
+        type="number"
+        className="w-full"
+      />
+      <PresetSelector handleSetConcentration={handleSetConcentration} />
+      <Paragraph className="mb-6">
+        {intl.formatMessage({ id: 'orLabel' })}
+      </Paragraph>
       <Selector
         labelChildren={intl.formatMessage({ id: 'strengthLabel' })}
         options={STRENGHTS}
@@ -63,13 +75,6 @@ export function Form() {
           e.target.value &&
           handleSetConcentration(e.target.value as TConcentration)
         }
-        className="w-full"
-      />
-      <Input
-        labelChildren={intl.formatMessage({ id: 'sizeLabel' })}
-        value={size}
-        onChange={(e) => handleSetSize(Number(e.target.value))}
-        type="number"
         className="w-full"
       />
     </div>
