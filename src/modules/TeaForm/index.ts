@@ -1,1 +1,1 @@
-export * from './TeaForm'
+export * from './TeaForm';

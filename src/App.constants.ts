@@ -1,6 +1,9 @@
 import { TConcentration, TStrength } from './App.types';
 
-export const BASE_INFUSION_TIME: Record<TStrength, Record<TConcentration, number[]>> = {
+export const BASE_INFUSION_TIME: Record<
+  TStrength,
+  Record<TConcentration, number[]>
+> = {
   weakest: {
     '1/10': [0, 0, 5, 10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 600],
     '1/15': [0, 5, 10, 10, 15, 20, 30, 45, 60, 120, 180, 300, 480, 600],
@@ -51,4 +54,3 @@ export const CONCENTRATIONS = [
   { id: '1/50', label: '1/50' },
   { id: '1/100', label: '1/100' },
 ];
-

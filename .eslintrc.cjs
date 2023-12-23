@@ -10,7 +10,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:tailwindcss/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -18,7 +18,7 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -29,7 +29,7 @@ module.exports = {
       'single',
       { allowTemplateLiterals: true, avoidEscape: true },
     ],
-    'max-len': ['error', { code: 120, tabWidth: 2 }],
+    "prettier/prettier": "error"
   },
   settings: {
     react: { version: 'detect' },

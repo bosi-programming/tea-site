@@ -19,33 +19,18 @@ export function StartInfusionSection() {
     <section className="w-5/6 max-w-screen-md text-left">
       <Paragraph>
         <span className="dark:text-pink">
-          <Leaf
-            height={24}
-            width={24}
-            className="inline-block align-middle"
-          />{' '}
+          <Leaf height={24} width={24} className="inline-block align-middle" />{' '}
         </span>
         {grams} g
       </Paragraph>
       <Paragraph>
         <span className="dark:text-pink">
-          <Cup
-            height={24}
-            width={24}
-            className="inline-block align-middle"
-          />{' '}
+          <Cup height={24} width={24} className="inline-block align-middle" />{' '}
         </span>
-        {
-          totalInfusions
-        }{' '}
-        {intl.formatMessage({ id: 'steeps' })}{' '}
-        {infusionsTime.join(', ')}{' '}
-        {intl.formatMessage({ id: 'seconds' })}
+        {totalInfusions} {intl.formatMessage({ id: 'steeps' })}{' '}
+        {infusionsTime.join(', ')} {intl.formatMessage({ id: 'seconds' })}
       </Paragraph>
-      <Timer
-        infusionTime={
-          infusionsTime
-        }
-      />
-    </section>)
+      <Timer infusionTime={infusionsTime} />
+    </section>
+  );
 }

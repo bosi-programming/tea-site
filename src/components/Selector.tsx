@@ -25,12 +25,12 @@ export function Selector({ labelChildren, options, ...rest }: SelectorProps) {
       </option>
       {options.map(({ id, label }) => {
         if (id === 'default') return null;
-        return (<option key={id} value={id}>
-          {label}
-        </option>
-        )
-      })
-      }
+        return (
+          <option key={id} value={id}>
+            {label}
+          </option>
+        );
+      })}
     </select>
   );
 }

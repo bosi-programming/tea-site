@@ -47,22 +47,36 @@ export const useTimer = (infusionTime: number[]) => {
         clearInterval(timer);
       }
     }
-  }, [time, startText, setHideForm, lastInfusionText, steep, infusionTime.length, start]);
-
-  const handleStart = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    setHideForm(true);
-    setStart(true);
-    setTime(infusionTime[steep]);
-    setTimeText(timerText(infusionTime[steep]));
-  }, [infusionTime, steep, setHideForm]);
-
-  const values = useMemo(() => ({
+  }, [
+    time,
+    startText,
+    setHideForm,
+    lastInfusionText,
     steep,
-    handleStart,
+    infusionTime.length,
     start,
-    timeText,
-  }), [steep, handleStart, start, timeText]);
+  ]);
+
+  const handleStart = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      setHideForm(true);
+      setStart(true);
+      setTime(infusionTime[steep]);
+      setTimeText(timerText(infusionTime[steep]));
+    },
+    [infusionTime, steep, setHideForm],
+  );
+
+  const values = useMemo(
+    () => ({
+      steep,
+      handleStart,
+      start,
+      timeText,
+    }),
+    [steep, handleStart, start, timeText],
+  );
 
   return values;
-}
+};

@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { IntlProvider } from 'react-intl'
-import { messages } from './i18n/messages'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import { IntlProvider } from 'react-intl';
+import { messages } from './i18n/messages';
 
 export type Locale = 'pt-BR' | 'en-US';
 
@@ -15,4 +15,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <App />
     </IntlProvider>
   </React.StrictMode>,
-)
+);

@@ -1,2 +1,2 @@
-export * from './StartInfusionSection'
-export * from './TeaForm'
+export * from './StartInfusionSection';
+export * from './TeaForm';

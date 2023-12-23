@@ -23,24 +23,26 @@ export function Form() {
     setSize(newSize);
     if (!concentration) return;
     setGrams(Math.ceil(newSize / Number(concentration.replace('1/', ''))));
-  }
+  };
 
   const handleSetConcentration = (newConcentration: TConcentration) => {
     setConcentration(newConcentration);
     if (size) {
-      setGrams(Math.ceil(Number(size) / Number(newConcentration.replace('1/', ''))));
+      setGrams(
+        Math.ceil(Number(size) / Number(newConcentration.replace('1/', ''))),
+      );
     }
     if (strength) {
       setInfusionsTime(BASE_INFUSION_TIME[strength][newConcentration]);
     }
-  }
+  };
 
   const handleSetStrength = (newStrength: TStrength) => {
     setStrength(newStrength);
     if (concentration) {
       setInfusionsTime(BASE_INFUSION_TIME[newStrength][concentration]);
     }
-  }
+  };
   return (
     <div className="flex w-full flex-col justify-center self-center lg:my-10 lg:w-6/12 lg:items-center">
       <Selector
@@ -48,7 +50,8 @@ export function Form() {
         options={STRENGHTS}
         value={strength ?? 'default'}
         onChange={(e) =>
-          e.target.value && handleSetStrength(e.target.value as keyof typeof BASE_INFUSION_TIME)
+          e.target.value &&
+          handleSetStrength(e.target.value as keyof typeof BASE_INFUSION_TIME)
         }
         className="w-full"
       />
@@ -57,7 +60,8 @@ export function Form() {
         options={CONCENTRATIONS}
         value={concentration ?? 'default'}
         onChange={(e) =>
-          e.target.value && handleSetConcentration(e.target.value as TConcentration)
+          e.target.value &&
+          handleSetConcentration(e.target.value as TConcentration)
         }
         className="w-full"
       />
@@ -69,6 +73,5 @@ export function Form() {
         className="w-full"
       />
     </div>
-  )
+  );
 }
-

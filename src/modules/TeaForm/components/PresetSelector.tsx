@@ -1,10 +1,3 @@
-import React from 'react';
-
-export interface PresetSelectorProps {
+export function PresetSelector() {
+  return null;
 }
-
-export function PresetSelector({ }: PresetSelectorProps) {
-
-  return null
-}
-

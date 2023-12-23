@@ -1,7 +1,8 @@
 export const messages = {
   ['en-US']: {
     title: 'Tea Site',
-    topDescription: 'Note that the real amount of tea and the infusion time can vary depending on the type of tea and the quality of the same. Please experiment yourself.',
+    topDescription:
+      'Note that the real amount of tea and the infusion time can vary depending on the type of tea and the quality of the same. Please experiment yourself.',
     strengthLabel: 'Select a strength:',
     concentrationLabel: 'Select a concentration:',
     sizeLabel: 'Size of vessel in ml',
@@ -19,7 +20,8 @@ export const messages = {
   },
   ['pt-BR']: {
     title: 'Site de Chá',
-    topDescription: 'Note que a quantidade real de chá e o tempo de infusão podem variar dependendo do tipo de chá e da qualidade do mesmo. Por favor, experimente você mesmo.',
+    topDescription:
+      'Note que a quantidade real de chá e o tempo de infusão podem variar dependendo do tipo de chá e da qualidade do mesmo. Por favor, experimente você mesmo.',
     strengthLabel: 'Seleciona o quão forte:',
     concentrationLabel: 'Seleciona a concentração:',
     sizeLabel: 'Tamanho do recipiente em ml',

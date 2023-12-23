@@ -11,7 +11,10 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
   return (
     <div className="w-full text-center">
       <Paragraph className="mt-10">
-        {intl.formatMessage({ id: 'timerInfusions' }, { steeps: steep + 1, totalSteeps: infusionTime.length })}
+        {intl.formatMessage(
+          { id: 'timerInfusions' },
+          { steeps: steep + 1, totalSteeps: infusionTime.length },
+        )}
       </Paragraph>
       <button
         className={[...baseClasses, ...darkClasses].join(' ')}
