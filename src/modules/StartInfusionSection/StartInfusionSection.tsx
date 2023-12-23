@@ -1,8 +1,10 @@
 import { useIntl } from 'react-intl';
 import { Cup } from '@/icons/Cup';
 import { Leaf } from '@/icons/Leaf';
-import { Paragraph, Timer } from '@/components';
+import { Paragraph } from '@/components';
 import { useInfusionStore } from '@/stores';
+
+import { Timer } from './components';
 
 export function StartInfusionSection() {
   const intl = useIntl();
