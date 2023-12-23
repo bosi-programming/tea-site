@@ -16,7 +16,7 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
         )}
       </Paragraph>
       <Button
-        className="mb-0 mt-2"
+        className="mb-0 mt-2 border-yellow-700 bg-yellow-500 hover:bg-yellow-700 focus:bg-yellow-500 disabled:hover:bg-yellow-500 dark:border-pink dark:bg-thulian dark:hover:bg-pink dark:focus:bg-pink dark:disabled:border-gray-600 dark:disabled:bg-gray-600 dark:disabled:hover:bg-gray-600"
         onClick={(e) => handleStart(e)}
         disabled={start || steep === infusionTime.length}
       >
