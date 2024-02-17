@@ -1,22 +1,22 @@
-import { BASE_INFUSION_TIME } from "@/App.constants";
-import { TConcentration } from "@/App.types";
+import { BASE_INFUSION_TIME } from '@/App.constants';
+import { TConcentration } from '@/App.types';
 
 const PRESETS_CONCENTRATION = {
   gongfu: '1/15' as TConcentration,
   semiGongfu: '1/30' as TConcentration,
   western: '1/50' as TConcentration,
-}
+};
 
 const PRESETS_INFUSIONS_TIME = {
   strongGongfu: BASE_INFUSION_TIME.strong[PRESETS_CONCENTRATION.gongfu],
   normalGongfu: BASE_INFUSION_TIME.normal[PRESETS_CONCENTRATION.gongfu],
   strongSemiGongfu: BASE_INFUSION_TIME.strong[PRESETS_CONCENTRATION.semiGongfu],
   normalSemiGongfu: BASE_INFUSION_TIME.normal[PRESETS_CONCENTRATION.semiGongfu],
-  gongfuChineseGreen: [15, 25, 40, 60, 90, 180, 300, 600],
-  senchado: [30, 0, 30, 60, 180],
-  westernBlack: [180, 300, 600],
-  westernChineseGreen: [120, 180],
-}
+  gongfuChineseGreen: [15, 25, 40, 60, 90, 180, 300, 600, 1200],
+  senchado: [30, 0, 30, 60, 180, 300, 600, 1200],
+  westernBlack: [180, 300, 600, 1200],
+  westernChineseGreen: [120, 180, 300, 600, 1200],
+};
 
 export const PRESETS = {
   gongfuRipePuer: {
@@ -59,4 +59,4 @@ export const PRESETS = {
     concentration: PRESETS_CONCENTRATION.western,
     infusionsTime: PRESETS_INFUSIONS_TIME.westernChineseGreen,
   },
-}
+};
