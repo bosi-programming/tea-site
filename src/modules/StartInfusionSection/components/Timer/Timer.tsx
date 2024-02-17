@@ -1,18 +1,37 @@
-import { Paragraph, Button } from '@/components';
+import { Paragraph, Button, Selector } from '@/components';
 import { useIntl } from 'react-intl';
 import { useTimer } from './useTimer';
+import { useInfusionStore } from '@/stores';
 
 export function Timer({ infusionTime }: { infusionTime: number[] }) {
   const intl = useIntl();
 
-  const { steep, handleStart, start, timeText } = useTimer(infusionTime);
+  const { totalInfusions } = useInfusionStore();
+  const { steep, setSteep, handleStart, start, timeText } =
+    useTimer(infusionTime);
 
   return (
     <div className="w-full text-center">
       <Paragraph className="mt-10">
         {intl.formatMessage(
           { id: 'timerInfusions' },
-          { steeps: steep + 1, totalSteeps: infusionTime.length },
+          {
+            steeps: (
+              <Selector
+                labelChildren={intl.formatMessage({ id: 'concentrationLabel' })}
+                options={Array.from(Array(totalInfusions).keys()).map((i) => ({
+                  id: i.toString(),
+                  label: (i + 1).toString(),
+                }))}
+                value={steep}
+                onChange={(e) =>
+                  e.target.value && setSteep(Number(e.target.value))
+                }
+                className="w-16 text-center"
+              />
+            ),
+            totalSteeps: infusionTime.length,
+          },
         )}
       </Paragraph>
       <Button

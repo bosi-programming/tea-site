@@ -74,6 +74,7 @@ export const useTimer = (infusionTime: number[]) => {
       handleStart,
       start,
       timeText,
+      setSteep,
     }),
     [steep, handleStart, start, timeText],
   );
