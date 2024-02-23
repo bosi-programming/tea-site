@@ -1,5 +1,5 @@
 export const messages = {
-  ['en-US']: {
+  ['en']: {
     title: 'Tea Site',
     topDescription:
       'Note that the real amount of tea and the infusion time can vary depending on the type of tea and the quality of the same. Please experiment yourself.',
@@ -30,7 +30,7 @@ export const messages = {
     orLabel: 'or',
     reset: 'Reset',
   },
-  ['pt-BR']: {
+  ['pt']: {
     title: 'Site de Chá',
     topDescription:
       'Note que a quantidade real de chá e o tempo de infusão podem variar dependendo do tipo de chá e da qualidade do mesmo. Por favor, experimente você mesmo.',
