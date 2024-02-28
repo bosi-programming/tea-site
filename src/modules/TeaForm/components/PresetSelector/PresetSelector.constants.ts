@@ -39,6 +39,10 @@ export const PRESETS = {
     concentration: PRESETS_CONCENTRATION.semiGongfu,
     infusionsTime: PRESETS_INFUSIONS_TIME.normalSemiGongfu,
   },
+  semiGongfuWhite: {
+    concentration: PRESETS_CONCENTRATION.semiGongfu,
+    infusionsTime: PRESETS_INFUSIONS_TIME.strongSemiGongfu,
+  },
   semiGongfuBlack: {
     concentration: PRESETS_CONCENTRATION.semiGongfu,
     infusionsTime: PRESETS_INFUSIONS_TIME.normalSemiGongfu,
