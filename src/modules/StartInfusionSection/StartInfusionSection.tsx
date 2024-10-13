@@ -16,6 +16,10 @@ export function StartInfusionSection() {
     infusionsTime ?? [0],
   );
 
+  if (!grams || !infusionsTime || !totalInfusions) {
+    return null;
+  }
+
   // TODO: Add reset button
   return (
     <section className="w-5/6 max-w-screen-md text-left">
