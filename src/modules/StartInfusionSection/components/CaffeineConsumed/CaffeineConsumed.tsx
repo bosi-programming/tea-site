@@ -3,6 +3,7 @@ import { useInfusionStore } from '@/stores';
 import { useIntl } from 'react-intl';
 import { calculateCaffeinePercentage } from './calculateCaffeinePercentage';
 import { CAFFEINE_BY_TEA } from '@/App.constants';
+import { Caffeine } from '@/icons/Caffeine';
 
 export interface CaffeineConsumedProps {
   steep: number;
@@ -31,7 +32,13 @@ export function CaffeineConsumed({ steep }: CaffeineConsumedProps) {
 
   return (
     <Paragraph>
-    {intl.formatMessage({id: 'caffeineConsumed' }, {caffeineConsumed: caffeineConsumedText, maxCaffeine})}
+        <span className="dark:text-pink">
+          <Caffeine height={24} width={24} className="inline-block align-middle" />{' '}
+        </span>
+      {intl.formatMessage(
+        { id: 'caffeineConsumed' },
+        { caffeineConsumed: caffeineConsumedText, maxCaffeine },
+      )}
     </Paragraph>
   );
 }

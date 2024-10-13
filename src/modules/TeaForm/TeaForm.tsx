@@ -9,9 +9,6 @@ export function TeaForm() {
 
   return (
     <form className="mt-5 flex w-5/6 max-w-screen-md flex-col justify-center lg:mt-10">
-      <Paragraph className="mb-5 hidden text-sm md:block lg:mb-10">
-        {intl.formatMessage({ id: 'topDescription' })}
-      </Paragraph>
       {!hideForm ? <Form /> : null}
       {!grams || !infusionsTime ? (
         <Paragraph>{intl.formatMessage({ id: 'pleaseFill' })}</Paragraph>
