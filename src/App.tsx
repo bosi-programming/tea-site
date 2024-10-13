@@ -1,9 +1,13 @@
 import { Title } from './components';
 import { useIntl } from 'react-intl';
 import { StartInfusionSection, TeaForm } from './modules';
+import { useInfusionStore } from './stores';
 
 function App() {
   const intl = useIntl();
+  const { grams, infusionsTime, totalInfusions } =
+    useInfusionStore();
+  const shouldShowInfusionSection = grams && infusionsTime && totalInfusions;
 
   return (
     <main
@@ -12,7 +16,7 @@ function App() {
     >
       <Title>{intl.formatMessage({ id: 'title' })}</Title>
       <TeaForm />
-      <StartInfusionSection />
+      {shouldShowInfusionSection ? <StartInfusionSection /> : null}
     </main>
   );
 }

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tea-v3';
+const CACHE_NAME = 'tea-v4';
 const urlsToCache = [
   '/',
 ];
