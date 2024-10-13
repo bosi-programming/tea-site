@@ -6,7 +6,7 @@ import { useInfusionStore } from '@/stores';
 
 export function PresetSelector() {
   const intl = useIntl();
-  const { infusionsTime, setInfusionsTime, handleSetConcentration } =
+  const { infusionsTime, setInfusionsTime, handleSetConcentration, setTeaType } =
     useInfusionStore();
   const [preset, setPreset] = useState<keyof typeof PRESETS | undefined>();
 
@@ -25,6 +25,7 @@ export function PresetSelector() {
     setPreset(value);
     handleSetConcentration(PRESETS[value].concentration);
     setInfusionsTime(PRESETS[value].infusionsTime);
+    setTeaType(PRESETS[value].teaType);
   };
 
   return (

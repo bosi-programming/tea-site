@@ -5,11 +5,16 @@ import { Button, Paragraph } from '@/components';
 import { useInfusionStore } from '@/stores';
 
 import { Timer } from './components';
+import { CaffeineConsumed } from './components/CaffeineConsumed';
+import { useTimer } from './useTimer';
 
 export function StartInfusionSection() {
   const intl = useIntl();
   const { grams, infusionsTime, totalInfusions, clearInfusionStore } =
     useInfusionStore();
+  const { steep, setSteep, handleStart, start, timeText } = useTimer(
+    infusionsTime ?? [0],
+  );
 
   if (!grams || !infusionsTime || !totalInfusions) {
     return null;
@@ -39,7 +44,8 @@ export function StartInfusionSection() {
           )
           .join(', ')}
       </Paragraph>
-      <Timer infusionTime={infusionsTime} />
+      <CaffeineConsumed steep={steep} />
+      <Timer steep={steep} setSteep={setSteep} start={start} handleStart={handleStart} timeText={timeText} />
       <div className="w-full text-center">
         <Button
           onClick={clearInfusionStore}

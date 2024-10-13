@@ -1,7 +1,11 @@
 import { useIntl } from 'react-intl';
 import { Input, Paragraph, Selector } from '@/components';
-import { BASE_INFUSION_TIME, CONCENTRATIONS } from '@/App.constants';
-import { TConcentration } from '@/App.types';
+import {
+  BASE_INFUSION_TIME,
+  CAFFEINE_BY_TEA,
+  CONCENTRATIONS,
+} from '@/App.constants';
+import { TConcentration, TTea } from '@/App.types';
 import { useInfusionStore } from '@/stores';
 import { PresetSelector } from '.';
 
@@ -16,6 +20,8 @@ export function Form() {
     handleSetConcentration,
     strength,
     handleSetStrength,
+    teaType,
+    setTeaType: handleSetTeaType,
   } = useInfusionStore();
 
   const STRENGHTS = Object.keys(BASE_INFUSION_TIME).map((key) => ({
@@ -23,6 +29,10 @@ export function Form() {
     label: intl.formatMessage({ id: key }),
   }));
 
+  const TEAS = Object.keys(CAFFEINE_BY_TEA).map((key) => ({
+    id: key,
+    label: intl.formatMessage({ id: key }),
+  }));
   if (hideForm) {
     return null;
   }
@@ -57,6 +67,15 @@ export function Form() {
         onChange={(e) =>
           e.target.value &&
           handleSetConcentration(e.target.value as TConcentration)
+        }
+        className="w-full"
+      />
+      <Selector
+        labelChildren={intl.formatMessage({ id: 'teaTypeLabel' })}
+        options={TEAS}
+        value={teaType ?? 'default'}
+        onChange={(e) =>
+          e.target.value && handleSetTeaType(e.target.value as TTea)
         }
         className="w-full"
       />

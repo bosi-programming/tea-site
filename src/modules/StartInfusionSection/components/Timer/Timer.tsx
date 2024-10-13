@@ -1,14 +1,29 @@
 import { Paragraph, Button, Selector } from '@/components';
 import { useIntl } from 'react-intl';
-import { useTimer } from './useTimer';
 import { useInfusionStore } from '@/stores';
 
-export function Timer({ infusionTime }: { infusionTime: number[] }) {
+export interface TimerProps {
+  steep: number;
+  setSteep: (val: number) => void;
+  start: boolean;
+  timeText: string;
+  handleStart: (e: React.MouseEvent) => void;
+}
+
+export function Timer({
+  steep,
+  setSteep,
+  handleStart,
+  start,
+  timeText,
+}: TimerProps) {
   const intl = useIntl();
 
-  const { totalInfusions } = useInfusionStore();
-  const { steep, setSteep, handleStart, start, timeText } =
-    useTimer(infusionTime);
+  const { totalInfusions, infusionsTime } = useInfusionStore();
+
+  if (!infusionsTime || !totalInfusions) {
+    return null;
+  }
 
   return (
     <div className="w-full text-center">
@@ -30,14 +45,14 @@ export function Timer({ infusionTime }: { infusionTime: number[] }) {
                 className="w-16 text-center"
               />
             ),
-            totalSteeps: infusionTime.length,
+            totalSteeps: infusionsTime.length,
           },
         )}
       </Paragraph>
       <Button
         className="mb-0 mt-2 border-yellow-700 bg-yellow-500 hover:bg-yellow-700 focus:bg-yellow-500 disabled:hover:bg-yellow-500 dark:border-pink dark:bg-thulian dark:hover:bg-pink dark:focus:bg-pink dark:disabled:border-gray-600 dark:disabled:bg-gray-600 dark:disabled:hover:bg-gray-600"
         onClick={(e) => handleStart(e)}
-        disabled={start || steep === infusionTime.length}
+        disabled={start || steep === infusionsTime.length}
       >
         {timeText}
       </Button>

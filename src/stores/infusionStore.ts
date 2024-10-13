@@ -1,11 +1,12 @@
 import { BASE_INFUSION_TIME } from '@/App.constants';
-import { TConcentration, TStrength } from '@/App.types';
+import { TConcentration, TStrength, TTea } from '@/App.types';
 import { StateCreator, create } from 'zustand';
 
 export interface IInfusionStore {
   size: number | string;
   strength: TStrength | null;
   concentration: TConcentration | null;
+  teaType: TTea;
   grams: number | null;
   infusionsTime: number[] | null;
   totalInfusions: number | null;
@@ -15,11 +16,13 @@ export interface IInfusionStore {
   handleSetSize: (size: number) => void;
   handleSetStrength: (strength: TStrength) => void;
   handleSetConcentration: (concentration: TConcentration) => void;
+  setTeaType: (teaType: TTea) => void;
   clearInfusionStore: () => void;
 }
 
 const defaultInfusionStore = {
   size: '',
+  teaType: null,
   strength: null,
   concentration: null,
   grams: null,
@@ -64,6 +67,10 @@ export const infusionStoreCreator: StateCreator<IInfusionStore> = (set) => ({
           Number(state.size) / Number(newConcentration.replace('1/', '')),
         ),
       }),
+    })),
+  setTeaType: (newTeaType: TTea) =>
+    set(() => ({
+      teaType: newTeaType,
     })),
   clearInfusionStore: () => set(() => defaultInfusionStore),
 });

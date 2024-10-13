@@ -1,4 +1,4 @@
-import { TConcentration, TStrength } from './App.types';
+import { TConcentration, TStrength, TTea } from './App.types';
 
 export const BASE_INFUSION_TIME: Record<
   TStrength,
@@ -54,3 +54,12 @@ export const CONCENTRATIONS = [
   { id: '1/50', label: '1/50' },
   { id: '1/100', label: '1/100' },
 ];
+
+export const CAFFEINE_BY_TEA = {
+  oolong: 20,
+  white: 20,
+  ripePuer: 30,
+  rawPuer: 30,
+  green: 30,
+  black: 25,
+} as const;
