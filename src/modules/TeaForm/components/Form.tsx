@@ -1,5 +1,5 @@
 import { useIntl } from 'react-intl';
-import { Input, Paragraph, Selector } from '@/components';
+import { Input, Selector } from '@/components';
 import {
   BASE_INFUSION_TIME,
   CAFFEINE_BY_TEA,
@@ -58,7 +58,7 @@ export function Form() {
         }
         className="w-full"
       />
-      <div className="flex flex-row justify-between w-full md:block">
+      <div className="flex w-full flex-row justify-between md:block">
         <Selector
           labelChildren={intl.formatMessage({ id: 'concentrationLabel' })}
           options={CONCENTRATIONS}
