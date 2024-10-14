@@ -12,7 +12,7 @@ export function Selector({ labelChildren, options, ...rest }: SelectorProps) {
       aria-label={labelChildren as string}
       {...rest}
       className={classNames(
-        `bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg
+        `bg-gray-50 border border-gray-300 text-gray-900 mb-3 md:mb-6 text-sm rounded-lg
           focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-green
           dark:border-emerald dark:placeholder-emerald dark:text-peach dark:focus:ring-emerald
           outline-none

@@ -27,7 +27,7 @@ export function Timer({
 
   return (
     <div className="w-full text-center">
-      <Paragraph className="mt-10">
+      <Paragraph className="mt-0 text-sm md:mt-10">
         {intl.formatMessage(
           { id: 'timerInfusions' },
           {
@@ -42,7 +42,7 @@ export function Timer({
                 onChange={(e) =>
                   e.target.value && setSteep(Number(e.target.value))
                 }
-                className="w-16 text-center"
+                className="!mb-0 w-16 text-center"
               />
             ),
             totalSteeps: infusionsTime.length,

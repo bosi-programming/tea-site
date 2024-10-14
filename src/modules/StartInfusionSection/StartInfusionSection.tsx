@@ -23,13 +23,13 @@ export function StartInfusionSection() {
   // TODO: Add reset button
   return (
     <section className="w-5/6 max-w-screen-md text-left">
-      <Paragraph>
+      <Paragraph className="text-sm">
         <span className="dark:text-pink">
           <Leaf height={24} width={24} className="inline-block align-middle" />{' '}
         </span>
         {grams} g
       </Paragraph>
-      <Paragraph>
+      <Paragraph className="text-sm">
         <span className="dark:text-pink">
           <Cup height={24} width={24} className="inline-block align-middle" />{' '}
         </span>

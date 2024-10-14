@@ -9,7 +9,8 @@ export function Title({ className, children }: TitleProps) {
   return (
     <h1
       className={classNames(
-        'text-3xl',
+        'text-xl',
+        'md:text-3xl',
         'font-bold',
         'font-mono',
         'underline',

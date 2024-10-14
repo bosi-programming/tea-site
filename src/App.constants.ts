@@ -1,4 +1,4 @@
-import { TConcentration, TStrength, TTea } from './App.types';
+import { TConcentration, TStrength } from './App.types';
 
 export const BASE_INFUSION_TIME: Record<
   TStrength,

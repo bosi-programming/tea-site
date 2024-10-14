@@ -31,10 +31,14 @@ export function CaffeineConsumed({ steep }: CaffeineConsumedProps) {
     caffeineConsumed > maxCaffeine ? maxCaffeine : caffeineConsumed;
 
   return (
-    <Paragraph>
-        <span className="dark:text-pink">
-          <Caffeine height={24} width={24} className="inline-block align-middle" />{' '}
-        </span>
+      <Paragraph className="text-sm">
+      <span className="dark:text-pink">
+        <Caffeine
+          height={24}
+          width={24}
+          className="inline-block align-middle"
+        />{' '}
+      </span>
       {intl.formatMessage(
         { id: 'caffeineConsumed' },
         { caffeineConsumed: caffeineConsumedText, maxCaffeine },

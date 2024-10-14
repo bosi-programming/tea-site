@@ -9,6 +9,8 @@ export interface ButtonProps {
 }
 
 const baseClasses = [
+  'text-sm',
+  'md:text-sm',
   'text-center',
   'w-6/12',
   'rounded',

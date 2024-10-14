@@ -47,9 +47,7 @@ export function Form() {
         className="w-full"
       />
       <PresetSelector />
-      <Paragraph className="mb-6">
-        {intl.formatMessage({ id: 'orLabel' })}
-      </Paragraph>
+      <hr className="pb-3" />
       <Selector
         labelChildren={intl.formatMessage({ id: 'strengthLabel' })}
         options={STRENGHTS}
@@ -60,25 +58,28 @@ export function Form() {
         }
         className="w-full"
       />
-      <Selector
-        labelChildren={intl.formatMessage({ id: 'concentrationLabel' })}
-        options={CONCENTRATIONS}
-        value={concentration ?? 'default'}
-        onChange={(e) =>
-          e.target.value &&
-          handleSetConcentration(e.target.value as TConcentration)
-        }
-        className="w-full"
-      />
-      <Selector
-        labelChildren={intl.formatMessage({ id: 'teaTypeLabel' })}
-        options={TEAS}
-        value={teaType ?? 'default'}
-        onChange={(e) =>
-          e.target.value && handleSetTeaType(e.target.value as TTea)
-        }
-        className="w-full"
-      />
+      <div className="flex flex-row justify-between w-full md:block">
+        <Selector
+          labelChildren={intl.formatMessage({ id: 'concentrationLabel' })}
+          options={CONCENTRATIONS}
+          value={concentration ?? 'default'}
+          onChange={(e) =>
+            e.target.value &&
+            handleSetConcentration(e.target.value as TConcentration)
+          }
+          className="w-5/12 md:w-full"
+        />
+        <Selector
+          labelChildren={intl.formatMessage({ id: 'teaTypeLabel' })}
+          options={TEAS}
+          value={teaType ?? 'default'}
+          onChange={(e) =>
+            e.target.value && handleSetTeaType(e.target.value as TTea)
+          }
+          className="w-5/12 md:w-full"
+        />
+      </div>
+      <hr className="pb-3" />
     </div>
   );
 }
