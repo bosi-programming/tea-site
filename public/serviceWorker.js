@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tea-v4';
+const CACHE_NAME = 'tea-v5';
 const urlsToCache = [
   '/',
 ];
@@ -12,7 +12,7 @@ self.addEventListener('activate', function(event) {
           // but remember that caches are shared across
           // the whole origin
           console.log(cacheName)
-return cacheName !== CACHE_NAME;
+          return cacheName !== CACHE_NAME;
         }).map(function(cacheName) {
           return caches.delete(cacheName);
         })
