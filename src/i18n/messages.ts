@@ -37,6 +37,7 @@ export const messages = {
     ripePuer: 'Ripe Puer',
     rawPuer: 'Raw Puer',
     green: 'Green',
+    hojicha: 'Hojicha',
     black: 'Black',
     caffeineConsumed: 'You consumed {caffeineConsumed}mg of caffeine from a total of {maxCaffeine}mg',
   },
@@ -78,6 +79,7 @@ export const messages = {
     ripePuer: 'Puer Cozido',
     rawPuer: 'Puer Cru',
     green: 'Verde',
+    hojicha: 'Hojicha',
     black: 'Preto',
     caffeineConsumed:
       'Você consumiu {caffeineConsumed}mg de cafeína de um total de {maxCaffeine}mg',

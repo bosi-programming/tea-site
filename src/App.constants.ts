@@ -61,5 +61,6 @@ export const CAFFEINE_BY_TEA = {
   ripePuer: 30,
   rawPuer: 30,
   green: 30,
+  hojicha: 18,
   black: 25,
 } as const;
