@@ -13,7 +13,7 @@ export interface IInfusionStore {
   hideForm: boolean;
   setInfusionsTime: (infusionsTime: number[]) => void;
   setHideForm: (hideForm: boolean) => void;
-  handleSetSize: (size: number) => void;
+  handleSetSize: (size: number | '') => void;
   handleSetStrength: (strength: TStrength) => void;
   handleSetConcentration: (concentration: TConcentration) => void;
   setTeaType: (teaType: TTea) => void;
@@ -36,7 +36,7 @@ export const infusionStoreCreator: StateCreator<IInfusionStore> = (set) => ({
   setInfusionsTime: (infusionsTime: number[]) =>
     set(() => ({ infusionsTime, totalInfusions: infusionsTime.length })),
   setHideForm: (hideForm: boolean) => set(() => ({ hideForm })),
-  handleSetSize: (size: number) =>
+  handleSetSize: (size: number | '') =>
     set((state) => ({
       size,
       ...(state.concentration && {

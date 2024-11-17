@@ -42,9 +42,14 @@ export function Form() {
       <Input
         labelChildren={intl.formatMessage({ id: 'sizeLabel' })}
         value={size}
-        onChange={(e) => handleSetSize(Number(e.target.value))}
-        type="number"
+        onChange={(e) => {
+          const value = Number(e.target.value.replace(/[^0-9]/g, ''));
+          handleSetSize(value || '');
+        }}
+        type="text"
+        inputMode="numeric"
         className="w-full"
+        pattern="[0-9]"
       />
       <PresetSelector />
       <hr className="pb-3" />
